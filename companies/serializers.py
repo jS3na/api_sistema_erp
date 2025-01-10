@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from companies.models import Employee, Task, TaskStatus
-from accounts.models import User, UserGroups, Group, GroupPermissions
+from accounts.models import User, User_Groups, Group, Group_Permissions
 from django.contrib.auth.models import Permission
 
 class EmployeesSerializer(serializers.ModelSerializer):
@@ -44,7 +44,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
         return obj.user.email
     
     def get_groups(self, obj):
-        groupsDB = UserGroups.objects.filter(user_id=obj.user.id).all()
+        groupsDB = User_Groups.objects.filter(user_id=obj.user.id).all()
         groupsDATA = []
 
         for group in groupsDB:
@@ -67,7 +67,7 @@ class GroupsSerializer(serializers.ModelSerializer):
         )
 
     def get_permissions(self, obj):
-        groups = GroupPermissions.objects.filter(group_id=obj.id).all()
+        groups = Group_Permissions.objects.filter(group_id=obj.id).all()
         permissions = []
 
         for group in groups:

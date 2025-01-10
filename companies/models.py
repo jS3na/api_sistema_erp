@@ -23,4 +23,4 @@ class Task(models.Model):
     updated_at = models.DateTimeField(null=True)
     status = models.ForeignKey(TaskStatus, on_delete=models.CASCADE)
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
-    employe = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
